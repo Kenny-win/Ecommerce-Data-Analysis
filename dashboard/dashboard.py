@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+import os
 from babel.numbers import format_currency
 sns.set(style='dark')
 
@@ -137,7 +138,11 @@ def frequency_monetary(data):
 
     return rfm_6m
 
-all_df = pd.read_csv("all_data.csv")
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "all_data.csv")
+
+all_df = pd.read_csv(DATA_PATH)
 print(all_df.info())
 
 datetime_columns = ["order_purchase_timestamp", "order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
